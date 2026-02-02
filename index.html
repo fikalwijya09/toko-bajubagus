@@ -6,157 +6,166 @@
 <title>Toko Baju Online</title>
 
 <style>
-body {
-  margin: 0;
+body{
+  margin:0;
   font-family: Arial, sans-serif;
-  background: #f3f3f3;
+  background:#f4f4f4;
 }
-header {
-  background: #111;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+
+/* NAVBAR */
+nav{
+  background:#111;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
 }
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 20px;
-  padding: 20px;
+nav h2{
+  margin:0;
 }
-.card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+nav ul{
+  list-style:none;
+  display:flex;
+  padding:0;
+  margin:0;
 }
-.card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
+nav ul li{
+  margin-left:15px;
 }
-.card-body {
-  padding: 15px;
-  text-align: center;
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
 }
-.price {
-  color: green;
-  font-weight: bold;
-  margin: 10px 0;
+
+/* HEADER */
+header{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
 }
-button {
-  background: #111;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
+
+/* PRODUK */
+.container{
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
-.cart {
-  background: white;
-  margin: 20px;
-  padding: 15px;
-  border-radius: 10px;
+.card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
-.cart h3 {
-  margin-top: 0;
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
 }
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
+.card-body{
+  padding:15px;
+  text-align:center;
 }
-.order {
-  background: #25D366;
-  color: white;
-  padding: 12px;
-  text-align: center;
-  border-radius: 8px;
-  text-decoration: none;
-  display: block;
-  margin-top: 10px;
+.price{
+  color:green;
+  font-weight:bold;
+  margin:10px 0;
 }
-footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 10px;
+button{
+  background:#25D366;
+  color:white;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:10px;
+  margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
+<nav>
+  <h2>TOKO BAJU</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</nav>
+
 <header>
-  <h1>TOKO BAJU ONLINE</h1>
-  <p>Simple • Rapih • Profesional</p>
+  <h1>Selamat Datang di Toko Baju Online</h1>
+  <p>Fashion simpel • Harga ramah</p>
 </header>
 
-<div class="container">
+<!-- PRODUK -->
+<section id="produk" class="container">
 
   <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
     <div class="card-body">
       <h3>Kaos Polos</h3>
-      <div class="price">50000</div>
-      <button onclick="addCart('Kaos Polos',50000)">Tambah Keranjang</button>
+      <div class="price">Rp 50.000</div>
+      <button onclick="order('Kaos Polos')">Beli</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
     <div class="card-body">
-      <h3>Hoodie</h3>
-      <div class="price">120000</div>
-      <button onclick="addCart('Hoodie',120000)">Tambah Keranjang</button>
+      <h3>Hoodie Hitam</h3>
+      <div class="price">Rp 120.000</div>
+      <button onclick="order('Hoodie Hitam')">Beli</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5">
     <div class="card-body">
-      <h3>Kemeja</h3>
-      <div class="price">90000</div>
-      <button onclick="addCart('Kemeja',90000)">Tambah Keranjang</button>
+      <h3>Kemeja Casual</h3>
+      <div class="price">Rp 95.000</div>
+      <button onclick="order('Kemeja Casual')">Beli</button>
     </div>
   </div>
 
-</div>
+</section>
 
-<div class="cart">
-  <h3>Keranjang</h3>
-  <div id="cartList"></div>
-  <strong>Total: Rp <span id="total">0</span></strong>
-  <a id="orderBtn" class="order" href="#" target="_blank">Order via WhatsApp</a>
-</div>
+<!-- TENTANG -->
+<section id="tentang" style="padding:20px;text-align:center;">
+  <h2>Tentang Kami</h2>
+  <p>Kami menyediakan baju berkualitas dengan harga terjangkau.</p>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak" style="padding:20px;text-align:center;">
+  <h2>Kontak</h2>
+  <p>Order via WhatsApp</p>
+</section>
 
 <footer>
   © 2026 Toko Baju Online
 </footer>
 
 <script>
-let cart = [];
-let total = 0;
-const WA = "6281234567890"; // GANTI NOMOR WA
-
-function addCart(nama,harga){
-  cart.push({nama,harga});
-  total += harga;
-  render();
-}
-
-function render(){
-  let list = "";
-  let pesan = "Halo saya mau order:%0A";
-  cart.forEach((item,i)=>{
-    list += `<div class='cart-item'>${i+1}. ${item.nama} - Rp ${item.harga}</div>`;
-    pesan += `- ${item.nama} (Rp ${item.harga})%0A`;
-  });
-  pesan += `Total: Rp ${total}`;
-  document.getElementById("cartList").innerHTML = list;
-  document.getElementById("total").innerText = total;
-  document.getElementById("orderBtn").href =
-    `https://wa.me/${WA}?text=${pesan}`;
+function order(nama){
+  const wa = "083877868525";
+  const text = `Halo, saya mau beli ${fikal}`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(text)}`);
 }
 </script>
 
