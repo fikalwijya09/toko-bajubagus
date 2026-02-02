@@ -162,10 +162,11 @@ footer{
 </footer>
 
 <script>
-function order(nama){
-  const wa = "083877868525";
-  const text = `Halo, saya mau beli ${fikal}`;
-  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(text)}`);
+function orderWA(namaProduk) {
+  var nomorWA = "6281234567890"; // GANTI NOMOR KAMU
+  var pesan = "Halo, saya mau beli " + namaProduk;
+  var url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+  window.location.href = url;
 }
 </script>
 
