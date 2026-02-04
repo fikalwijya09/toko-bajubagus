@@ -104,8 +104,8 @@ footer{
 <section id="home" class="active">
     <h2 align="center">Selamat Datang</h2>
     <p align="center">
-        Toko baju online Yang Menyediakan<br>
-        berbagai model Baju pria & wanita.
+        Toko baju online terpercaya dengan kualitas terbaik.<br>
+        Menyediakan berbagai pilihan baju pria dan wanita.
     </p>
 </section>
 
@@ -189,52 +189,57 @@ footer{
 <script>
 let hargaBarang = 0;
 
+const namaEl = document.getElementById("nama");
+const barangEl = document.getElementById("barang");
+const hargaEl = document.getElementById("harga");
+const totalEl = document.getElementById("total");
+const jumlahEl = document.getElementById("jumlah");
+
 function showPage(id){
     document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
+function formatRupiah(angka){
+    return "Rp" + angka.toLocaleString("id-ID");
+}
+
 function pilih(barang, harga){
     showPage('pesan');
-    document.getElementById("barang").value = barang;
-    document.getElementById("harga").value = "Rp"+harga;
+    barangEl.value = barang;
     hargaBarang = harga;
+    hargaEl.value = formatRupiah(harga);
     hitung();
 }
 
 function hitung(){
-    let j = document.getElementById("jumlah").value;
-    document.getElementById("total").value = "Rp"+(hargaBarang * j);
+    let j = Number(jumlahEl.value);
+    totalEl.value = formatRupiah(hargaBarang * j);
 }
 
 function kirimWA(){
-    let nama = namaEl.value;
+    let nama = namaEl.value.trim();
     let barang = barangEl.value;
-    let ukuran = document.getElementById("ukuran").value;
-    let warna = document.getElementById("warna").value;
-    let jumlah = document.getElementById("jumlah").value;
-    let total = document.getElementById("total").value;
 
-    if(nama=="" || barang==""){
-        alert("Lengkapi data!");
+    if(nama === "" || barang === ""){
+        alert("Lengkapi data terlebih dahulu!");
         return;
     }
 
-    let text =
-    "Halo, saya mau pesan baju%0A%0A"+
-    "Nama: "+nama+"%0A"+
-    "Barang: "+barang+"%0A"+
-    "Ukuran: "+ukuran+"%0A"+
-    "Warna: "+warna+"%0A"+
-    "Jumlah: "+jumlah+"%0A"+
-    "Total: "+total;
+    let text = 
+`Halo, saya mau pesan baju
 
-    let wa = "083877868525";
-    window.open("https://wa.me/"+wa+"?text="+text,"_blank");
+Nama: ${nama}
+Barang: ${barang}
+Ukuran: ${document.getElementById("ukuran").value}
+Warna: ${document.getElementById("warna").value}
+Jumlah: ${jumlahEl.value}
+Total: ${totalEl.value}`;
+
+    let wa = "6283877868525";
+    let url = "https://wa.me/" + wa + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
 }
-
-const namaEl = document.getElementById("nama");
-const barangEl = document.getElementById("barang");
 </script>
 
 </body>
